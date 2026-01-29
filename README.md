@@ -51,7 +51,6 @@ make
 make MPICC=mpiicc PAPI_INC=/custom/papi/include PAPI_LIB=/custom/papi/lib
 ```
 
-
 # Usage:
 
 #Set PAPI_LIST environment variable:

@@ -26,10 +26,10 @@ endif
 all:  vm.so
 
 vm.so: vm.o vm.c 
-	$(MPICC) -m64 -fPIC vm.o $(MPI_LIB_FLAGS) -L$(PAPI_LIB) -lpapi -shared -o vm.so 
+	$(MPICC) -m64 -fPIC vm.o $(MPI_LIB_FLAGS) -L$(PAPI_LIB) -Wl,-rpath,$(PAPI_LIB) -lpapi -shared -o vm.so 
 
 vm.o: vm.h vm.c
-	$(MPICC) -fPIC $(FLAGS)  vm.c -I$(MPI_INC) -I$(PAPI_INC)
+	$(MPICC) -fPIC $(FLAGS)  vm.c $(if $(MPI_INC),-I$(MPI_INC)) -I$(PAPI_INC)
 
 clean: 
 	rm -f *.o *.a *.so
